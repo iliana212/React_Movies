@@ -18,7 +18,6 @@ import RutaProtegida from "./features/seguridad/componentes/RutaProtegida";
 import Registro from "./features/seguridad/componentes/Registro";
 import Login from "./features/seguridad/componentes/Login";
 import IndiceUsuarios from "./features/seguridad/componentes/IndiceUsuarios";
-import AuthApp from "./generic/auth/AuthApp";
 
 export default function AppRoutes() {
     return (
@@ -43,16 +42,11 @@ export default function AppRoutes() {
 
                 <Route path="/peliculas/crear" element={<CrearPelicula />} />
                 <Route path="/peliculas/editar/:id" element={<EditarPelicula />} />
-
             </Route>
-
-
 
             <Route path="/peliculas/filtrar" element={<FiltrarPeliculas />} />
             <Route path="/peliculas/:id" element={<DetallePelicula />} />
-
-            <Route path="/generic" element={<AuthApp />} />
-
+            
             <Route path="*" element={<RutaNoEncontrada />} />
         </Routes>
     )

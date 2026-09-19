@@ -40,3 +40,4 @@ Thumbs.db
 *.sln
 *.sw?
 src/generic/
+src/Yupi.tsx
