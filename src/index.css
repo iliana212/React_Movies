@@ -1,0 +1,18 @@
+.error{
+    color: red;
+}
+
+nav{
+    background-color: #052c65;
+}
+
+.indice-elementos th{   
+    background-color: #4a4cc9 !important;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.page-link.active, .active > .page-link {
+     background-color: #4a4cc9 !important;
+}

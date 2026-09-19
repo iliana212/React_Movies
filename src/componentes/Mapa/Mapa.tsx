@@ -1,0 +1,44 @@
+import { MapContainer, Marker, Popup, TileLayer, useMapEvent } from "react-leaflet";
+import type Coordenada from "./Coordenada.model";
+import { useState } from "react";
+
+export default function Mapa(props: MapaProps) {
+    const [coordenadas, setCoordenadas] = useState<Coordenada[] | undefined>(props.coordenadas);
+
+    return (
+        <MapContainer center={[45.4645982140017, 9.189261167169828]} zoom={15} scrollWheelZoom={true} style={{ height: '400px' }}>
+            <TileLayer attribution="Porkito Peliculas" url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+            {props.editable ? 
+                <ClickMapa setPunto={coordenada => {
+                    setCoordenadas([coordenada]);
+                    if (props.lugarSeleccionado){
+                        props.lugarSeleccionado(coordenada);
+                    }
+                }} /> : undefined
+            }           
+
+            {coordenadas?.map(coordenada => 
+                <Marker key={coordenada.lat + coordenada.lng} position={[coordenada.lat, coordenada.lng]}>
+                {coordenada.mensaje ? <Popup>{coordenada.mensaje}</Popup> : undefined} </Marker>)}
+        </MapContainer>
+    )
+}
+
+interface MapaProps{
+    lugarSeleccionado?: (coordenada: Coordenada) => void;
+    coordenadas?: Coordenada[];
+    editable: boolean;
+}
+
+function ClickMapa(props: ClickMapaProps) {
+    useMapEvent('click', e => {
+        props.setPunto({ lat: e.latlng.lat, lng: e.latlng.lng })
+    })
+
+    return null;
+}
+
+interface ClickMapaProps {
+    setPunto: (coordenada: Coordenada) => void;
+}
