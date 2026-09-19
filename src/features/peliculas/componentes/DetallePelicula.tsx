@@ -63,13 +63,11 @@ export default function DetallePelicula(){
                     <span className="d-inline-block me-2">
                         <h4>Poster</h4>
                         <img src={pelicula.poster} style={{width:'225px', height:'315px'}} />
-                    </span>
-                    {pelicula.trailer.length > 0}(
+                    </span>                   
                     <span>
                         <h4>Trailer</h4>
                         <iframe width="565" height="315" src={ObtenerUrlEmbebida(pelicula.trailer)} title="Trailer" allowFullScreen></iframe>
-                    </span> 
-                    )                                       
+                    </span>                                                           
                 </div>
                 {pelicula.actores && pelicula.actores.length > 0 && (
                     <div>
