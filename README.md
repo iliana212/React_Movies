@@ -10,7 +10,13 @@ Existe también una versión de este cliente en Angular: [Angular_Movies](https:
 
 > **Estado:** en desarrollo activo.
 
-![Inicio](docs/home.png) ![Filtro](docs/filtro.png) ![Detalle](docs/detalle.png) ![Actores](docs/actores.png)
+| Inicio | Buscador de Películas |
+|---|---|
+| ![Inicio](docs/home.png) | ![Filtro](docs/filtro.png) |
+
+| Detalle de Película | Pantalla Actores |
+|---|---|
+| ![Detalle](docs/detalle.png) | ![Actores](docs/actores.png) |
 
 ## En un vistazo
 
