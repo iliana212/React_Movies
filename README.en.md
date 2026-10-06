@@ -12,7 +12,13 @@ There is also an Angular version of this client: [Angular_Movies](https://github
 
 > **Status:** actively in development.
 
-![Inicio](docs/home.png) ![Filtro](docs/filtro.png) ![Detalle](docs/detalle.png) ![Actores](docs/actores.png)
+| Landing Page | Movie Filter |
+|---|---|
+| ![Inicio](docs/home.png) | ![Filtro](docs/filtro.png) |
+
+| Movie Details | Actors Page |
+|---|---|
+| ![Detalle](docs/detalle.png) | ![Actores](docs/actores.png) |
 
 ## At a glance
 
