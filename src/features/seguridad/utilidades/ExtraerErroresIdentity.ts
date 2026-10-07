@@ -2,8 +2,11 @@ import type { AxiosError } from "axios";
 
 export default function ExtraerErroresIdentity(obj: AxiosError): string[]{
     const data = obj.response?.data as RespuestaError[];
-    const mensajeError : string[] = data.map(error => error.description);
-    return mensajeError;
+    let mensajesDeError: string[] = [];
+    if (!data) return mensajesDeError;
+
+    mensajesDeError = data.map(error => error.description);
+    return mensajesDeError;
 }
 
 interface RespuestaError{

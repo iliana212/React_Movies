@@ -34,7 +34,7 @@ export function obtenerClaims(): Claim[]{
     }
 
     try{
-        const payloadBase64 = token.split('.')[1];
+        const payloadBase64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');    
         const payloadJson = atob(payloadBase64);
         const dataToken = JSON.parse(payloadJson);
 

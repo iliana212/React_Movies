@@ -25,8 +25,8 @@ export default function EditarActor(){
                 foto: actor.foto
             };
             setModelo(actorCreacion);
-        });       
-    }, [id]);
+        }).catch(() => navigate('/actores'));
+    }, [id, navigate]);
 
     const onSubmit: SubmitHandler<ActorCreacion> = async (data) => {
         try{

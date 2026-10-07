@@ -13,13 +13,18 @@ export default function useFiltroPeliculas(valorInicial: FormType, setValue: Use
     const [pagina, setPagina] = useState(searchParams.has('pagina') ? parseInt(searchParams.get('pagina')!, 10) : 1);
     const [recordsPorPagina, setRecordsPorPagina] = useState(searchParams.has('recordsPorPagina') ? parseInt(searchParams.get('recordsPorPagina')!, 10) : 2);
     const [cantidadTotalRegistros, setCantidadTotalRegistros] = useState(0);
+    const [generosCargados, setGenerosCargados] = useState(false);
+
 
     useEffect(() => {
-        clienteAPI.get<Genero[]>('/generos/todos').then(res => setGeneros(res.data));
+        clienteAPI.get<Genero[]>('/generos/todos')
+        .then(res => setGeneros(res.data))
+        .catch(err => console.error(err))
+        .finally(() => setGenerosCargados(true));
     }, []);
 
     useEffect(() => {
-        if (generos.length === 0) {
+       if (!generosCargados) {
             return;
         }
 
@@ -32,11 +37,11 @@ export default function useFiltroPeliculas(valorInicial: FormType, setValue: Use
             setValue('generoId', valorInicial.generoId);
         }
         if (searchParams.has('enCines')) {
-            valorInicial.enCines = Boolean(searchParams.get('enCines'));
+            valorInicial.enCines = searchParams.get('enCines') === 'true';
             setValue('enCines', valorInicial.enCines);
         }
         if (searchParams.has('proximosEstrenos')) {
-            valorInicial.proximosEstrenos = Boolean(searchParams.get('proximosEstrenos'));
+            valorInicial.proximosEstrenos = searchParams.get('proximosEstrenos') === 'true';
             setValue('proximosEstrenos', valorInicial.proximosEstrenos);
         }
 

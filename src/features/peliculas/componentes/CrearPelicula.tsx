@@ -21,11 +21,13 @@ export default function CrearPelicula(){
     const navigate = useNavigate();
 
     useEffect(()=>{
-        clienteAPI.get<PeliculasPostGet>('/peliculas/postget').then(res => {
+        clienteAPI.get<PeliculasPostGet>('/peliculas/postget')
+        .then(res => {
             setGenerosNoSeleccionados(res.data.generos);
             setCinesNoSeleccionados(res.data.cines);
             setCargando(false);
-        });
+        })
+        .catch(()=>navigate('/peliculas'));
     },[]);
 
     const onSubmit: SubmitHandler<PeliculaCreacion> = async (data) =>{

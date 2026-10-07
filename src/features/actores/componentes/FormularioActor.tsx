@@ -27,7 +27,7 @@ export default function FormularioActor(props: FormaularioActorProps){
                 {errors.nombre && <p className="error">{errors.nombre.message}</p>}
             </div>
             <div className="form-group">
-                <label htmlFor="fechaNacimiento">Nombre</label>
+                <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
                 <input type="date" id="fechaNacimiento" className="form-control" {...register('fechaNacimiento')} />
                 {errors.fechaNacimiento && <p className="error">{errors.fechaNacimiento.message}</p>}
             </div>

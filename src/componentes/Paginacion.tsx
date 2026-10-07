@@ -27,13 +27,13 @@ export default function Paginacion(props: PaginacionProps){
                     <div className="col">
                         <ul className="pagination justify-content-center mb-0">
                             <li className={`page-item ${props.paginaActual === 1 ? 'disabled': ''}`}>
-                                <button className="page-link" onClick={() => props.onCambioPaginacion(props.paginaActual-1, props.registrosPorPagina)}>&laquo;</button>
+                                <button className="page-link" disabled={props.paginaActual === 1} onClick={() => props.onCambioPaginacion(props.paginaActual-1, props.registrosPorPagina)}>&laquo;</button>
                             </li>
                             {paginas.map(pagina => <li key={pagina} className={`page-item ${props.paginaActual === pagina ? 'active' : ''}`}>
                                 <button className="page-link" onClick={() => props.onCambioPaginacion(pagina, props.registrosPorPagina)}>{pagina}</button>
                             </li>)}
-                            <li className={`page-item ${props.paginaActual === totalPaginas ? 'disabled': ''}`}>
-                                <button className="page-link" onClick={() => props.onCambioPaginacion(props.paginaActual+1, props.registrosPorPagina)}>&raquo;</button>
+                            <li className={`page-item ${props.paginaActual >= totalPaginas ? 'disabled': ''}`}>
+                                <button className="page-link" disabled={props.paginaActual >= totalPaginas} onClick={() => props.onCambioPaginacion(props.paginaActual+1, props.registrosPorPagina)}>&raquo;</button>
                             </li>
                         </ul>
                     </div>

@@ -25,8 +25,7 @@ export default function AppRoutes() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/usuarios" element={<IndiceUsuarios />} />
-
+            
             <Route element={<RutaProtegida claims={['esadmin']} />}>
                 <Route path="/generos" element={<IndiceGeneros />} />
                 <Route path="/generos/crear" element={<CrearGenero />} />
@@ -42,6 +41,8 @@ export default function AppRoutes() {
 
                 <Route path="/peliculas/crear" element={<CrearPelicula />} />
                 <Route path="/peliculas/editar/:id" element={<EditarPelicula />} />
+
+                <Route path="/usuarios" element={<IndiceUsuarios />} />
             </Route>
 
             <Route path="/peliculas/filtrar" element={<FiltrarPeliculas />} />

@@ -34,7 +34,7 @@ export default function PeliculaIndividual(props: PeliculaIndividualProps) {
                 autorizado={
                     <>
                         <div>
-                            <Boton onClick={() => navigate(`peliculas/editar/${props.pelicula.id}`)}>Editar</Boton>
+                            <Boton onClick={() => navigate(`/peliculas/editar/${props.pelicula.id}`)}>Editar</Boton>
                             <Boton className="btn btn-danger ms-4" onClick={() => Confirmar(() => Borrar(props.pelicula.id))}>Borrar</Boton>
                         </div>
                     </>

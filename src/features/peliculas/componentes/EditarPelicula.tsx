@@ -21,7 +21,8 @@ export default function EditarPelicula(){
 
 
     useEffect(()=>{
-        clienteAPI.get<PeliculasPutGet>(`/peliculas/putget/${id}`).then(res => {
+        clienteAPI.get<PeliculasPutGet>(`/peliculas/putget/${id}`)
+        .then(res => {
             const pelicula = res.data.pelicula;
             const peliculaCreacion: PeliculaCreacion = {
                 titulo: pelicula.titulo,
@@ -32,6 +33,7 @@ export default function EditarPelicula(){
             setModelo(peliculaCreacion);
             setPeliculaPutGet(res.data);
         })
+        .catch(()=>navigate('/peliculas'));
     },[id])
 
     const onSubmit: SubmitHandler<PeliculaCreacion> = async (data) => {

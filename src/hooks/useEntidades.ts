@@ -10,10 +10,16 @@ export function useEntidades<T>(url: string) {
 
     const cargarRegistros = useCallback(() => {
         setCargando(true);
-        clienteAPI.get<T[]>(url, { params: { pagina, recordsPorPagina } }).then(resp => {
-            const cantidadTotalRegistros = parseInt(resp.headers["cantidad-total-registros"]);
+        clienteAPI.get<T[]>(url, { params: { pagina, recordsPorPagina } })
+        .then(resp => {
+            const cantidadTotalRegistros = parseInt(resp.headers["cantidad-total-registros"]) || 0;
             setCantidadTotalRegistros(cantidadTotalRegistros);
             setEntidades(resp.data);
+            setCargando(false);
+        }).catch(err => {
+            console.error(err);
+            setEntidades([]);
+            setCantidadTotalRegistros(0);
             setCargando(false);
         });
     }, [pagina, recordsPorPagina, url]);

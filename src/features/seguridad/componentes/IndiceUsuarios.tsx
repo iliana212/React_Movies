@@ -7,24 +7,28 @@ import type Usuario from "../modelos/Usuario.model";
 import Boton from "../../../componentes/Boton";
 import Confirmar from "../../../utilidades/Confirmar";
 
-export default function IndiceUsuarios(){
+export default function IndiceUsuarios() {
     const usuariosHook = useEntidades<Usuario>('/usuarios/listadoUsuarios');
 
-    async function hacerAdmin(email: string){
+    async function hacerAdmin(email: string) {
         await editarAdmin('usuarios/hacerAdmin', email);
     }
 
-     async function removerAdmin(email: string){
+    async function removerAdmin(email: string) {
         await editarAdmin('usuarios/removerAdmin', email);
     }
 
-    async function editarAdmin(url: string, email: string){
-        const editarClaim: EditarClaim = {email};
-        await clienteAPI.post(url, editarClaim);
-        Swal.fire({title: 'Exitoso', text: 'Operación realizada con éxito', icon: 'success'});
+    async function editarAdmin(url: string, email: string) {
+        try {
+            const editarClaim: EditarClaim = { email };
+            await clienteAPI.post(url, editarClaim);
+            Swal.fire({ title: 'Exitoso', text: 'Operación realizada con éxito', icon: 'success' });
+        } catch (err) {
+            Swal.fire({ title: 'Error', text: 'Ocurrió un error', icon: 'error' });
+        }
     }
 
-    return(
+    return (
         <IndiceEntidades titulo="Usuarios" {...usuariosHook}>
             {(usuarios) => <>
                 <thead className="table-dark">
@@ -37,8 +41,8 @@ export default function IndiceUsuarios(){
                     {usuarios.map(usuario => <tr key={usuario.email}>
                         <td>{usuario.email}</td>
                         <td className="text-end">
-                            <Boton onClick={()=> Confirmar(() => hacerAdmin(usuario.email), `Deseas hacer admin a: ${usuario.email}`, 'Si')}>Hacer Admin</Boton>
-                            <Boton className="btn btn-danger ms-1" onClick={()=> Confirmar(() => removerAdmin(usuario.email),`Deseas remover admin: ${usuario.email}`, 'Si')}>Remover Admin</Boton>       
+                            <Boton onClick={() => Confirmar(() => hacerAdmin(usuario.email), `Deseas hacer admin a: ${usuario.email}`, 'Si')}>Hacer Admin</Boton>
+                            <Boton className="btn btn-danger ms-1" onClick={() => Confirmar(() => removerAdmin(usuario.email), `Deseas remover admin: ${usuario.email}`, 'Si')}>Remover Admin</Boton>
                         </td>
 
                     </tr>)}
