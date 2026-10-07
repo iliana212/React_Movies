@@ -58,7 +58,8 @@ src/
 │   └── home/
 ├── hooks/          # Hooks reutilizables (useEntidades)
 ├── utilidades/     # Alertas, confirmaciones, manejo de errores, fechas
-└── validaciones/   # Validaciones con Yup
+├── validaciones/   # Validaciones con Yup
+└── __tests__/      # Pruebas unitarias e integrales (Vitest + Testing Library)
 ```
 
 ## Cómo ejecutarlo
@@ -102,6 +103,19 @@ La aplicación estará disponible en `http://localhost:5173`.
 | `npm run build` | Verifica los tipos con TypeScript y genera el build de producción |
 | `npm run preview` | Previsualiza el build de producción |
 | `npm run lint` | Ejecuta ESLint |
+| `npm test` | Ejecuta todas las pruebas unitarias e integrales |
+| `npm run test:coverage` | Ejecuta las pruebas y genera el reporte de cobertura |
+
+## Pruebas
+
+El proyecto cuenta con **285 pruebas** (unitarias e integrales) escritas con [Vitest](https://vitest.dev/) y [Testing Library](https://testing-library.com/), con un **95&nbsp;% de cobertura** de líneas. Cubren la autenticación, las rutas protegidas por rol y el CRUD completo de géneros, actores, cines y películas (casos normales, límite y de falla).
+
+```bash
+npm test              # Ejecuta toda la suite una vez
+npm run test:watch    # Modo interactivo
+npm run test:coverage # Suite + reporte de cobertura (coverage/index.html)
+```
+
 
 ## Proyectos relacionados
 

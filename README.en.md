@@ -60,7 +60,8 @@ src/
 │   └── home/
 ├── hooks/          # Reusable hooks (useEntidades)
 ├── utilidades/     # Alerts, confirmations, error handling, dates
-└── validaciones/   # Yup validations
+├── validaciones/   # Yup validations
+└── __tests__/      # Unit and integration tests (Vitest + Testing Library)
 ```
 
 ## Getting started
@@ -104,6 +105,19 @@ The app will be available at `http://localhost:5173`.
 | `npm run build` | Type-check with TypeScript and create a production build |
 | `npm run preview` | Preview the production build locally |
 | `npm run lint` | Run ESLint |
+| `npm test` | Run all unit and integration tests |
+| `npm run test:coverage` | Run the tests and generate the coverage report |
+
+## Testing
+
+The project has **285 tests** (unit and integration) written with [Vitest](https://vitest.dev/) and [Testing Library](https://testing-library.com/), with **95% line coverage**. They cover authentication, role-protected routes, and the full CRUD for genres, actors, cinemas and movies (normal, edge, and failure cases).
+
+```bash
+npm test              # Run the whole suite once
+npm run test:watch    # Interactive mode
+npm run test:coverage # Suite + coverage report (coverage/index.html)
+```
+
 
 ## Related projects
 
