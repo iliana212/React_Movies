@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent } from "react";
 import styles from './../componentes/SeleccionarImagen.module.css';
+
 export default function SeleccionarImagen(props: SeleccionarImagenProps){
     
     const [imagenBase64, setImagenBase64] = useState('');
@@ -35,7 +36,6 @@ export default function SeleccionarImagen(props: SeleccionarImagenProps){
         </div>
     )
 }
-
 
 interface SeleccionarImagenProps{
     label: string;

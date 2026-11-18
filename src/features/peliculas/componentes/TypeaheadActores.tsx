@@ -3,6 +3,7 @@ import type { Option } from "react-bootstrap-typeahead/types/types";
 import type ActorPelicula from "../modelos/ActorPelicula";
 import { useState } from "react";
 import clienteAPI from "../../../api/clienteAxios";
+import { getImageUrl } from "../../../componentes/LoadImage";
 
 export default function TypeaheadActores(props: TypeaheadActoresProps){
     const [actores, setActores] = useState<ActorPelicula[]>([]);
@@ -64,7 +65,7 @@ export default function TypeaheadActores(props: TypeaheadActoresProps){
                     const actor = opcion as ActorPelicula;
                     return(
                         <>
-                            <img alt="imagen actor" src={actor.foto}
+                            <img alt="imagen actor" src= {getImageUrl(actor.foto)}
                             style={{height:'64px',width:'64px',marginRight:'1px'}} />
                             <span>{actor.nombre}</span>
                         </>
@@ -75,7 +76,7 @@ export default function TypeaheadActores(props: TypeaheadActoresProps){
                 {props.actores.map(actor => (
                     <li draggable={true} onDragStart={() => manejarDragStart(actor)} onDragOver={()=> manejarDragOver(actor)} className="list-group-item d-flex align-items-center" key={actor.id}>
                         <div style={{width:'70px'}}>
-                            <img src={actor.foto} alt='foto' style={{height:'60px'}} />
+                            <img src={getImageUrl(actor.foto)} alt='foto' style={{height:'60px'}} />
                         </div>
                         <div style={{width:'150px', marginLeft:'1rem'}}>
                             {actor.nombre}

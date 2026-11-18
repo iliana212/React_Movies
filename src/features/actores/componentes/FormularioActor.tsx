@@ -7,6 +7,7 @@ import { fechaNoFutura, primeraLetraMayus } from "../../../validaciones/Validaci
 import { yupResolver } from "@hookform/resolvers/yup";
 import SeleccionarImagen from "../../../componentes/SeleccionarImagen";
 import MostrarErrores from "../../../componentes/MostrarErrores";
+import { getImageUrl } from "../../../componentes/LoadImage";
 
 export default function FormularioActor(props: FormaularioActorProps){
     const {register, handleSubmit, setValue, formState: {errors,isValid,isSubmitting}} = useForm<ActorCreacion>({
@@ -32,7 +33,7 @@ export default function FormularioActor(props: FormaularioActorProps){
                 {errors.fechaNacimiento && <p className="error">{errors.fechaNacimiento.message}</p>}
             </div>
 
-            <SeleccionarImagen label="Foto" imagenURL={imagenActualURL} imagenSeleccionada={foto=>setValue('foto',foto)} />
+            <SeleccionarImagen label="Foto" imagenURL={getImageUrl(imagenActualURL)} imagenSeleccionada={foto=>setValue('foto',foto)} />
 
             <div className="mt-2">
                 <Boton type="submit" disabled={!isValid || isSubmitting}>{isSubmitting ? 'Enviando...' : 'Enviar'}</Boton>

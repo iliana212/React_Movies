@@ -13,6 +13,7 @@ import type Cine from "../../cines/modelos/Cine.model";
 import TypeaheadActores from "./TypeaheadActores";
 import type ActorPelicula from "../modelos/ActorPelicula";
 import MostrarErrores from "../../../componentes/MostrarErrores";
+import { getImageUrl } from "../../../componentes/LoadImage";
 
 export default function FormularioPelicula(props: FormularioPeliculaProps){
     const{register, handleSubmit, setValue, formState: {errors,isValid,isSubmitting}} = useForm<PeliculaCreacion>({
@@ -61,7 +62,7 @@ export default function FormularioPelicula(props: FormularioPeliculaProps){
                     <input type="text" id="trailer" className="form-control" {...register('trailer')} />
                     {errors.trailer && <p className="error">{errors.trailer.message}</p>}
                 </div>
-                <SeleccionarImagen label="Poster" imagenURL={imagenActualURL} imagenSeleccionada={poster => setValue('poster',poster)} />
+                <SeleccionarImagen label="Poster" imagenURL={getImageUrl(imagenActualURL)} imagenSeleccionada={poster => setValue('poster',poster)} />
                 <div className="form-group">
                     <label>Géneros:</label>
                     <SelectorMultiple seleccionados={generosSeleccinados} noSeleccionados={generosNoSeleccinados} 

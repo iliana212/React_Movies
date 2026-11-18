@@ -1,4 +1,5 @@
 import IndiceEntidades from "../../../componentes/IndiceEntidades";
+import { getImageUrl } from "../../../componentes/LoadImage";
 import { useEntidades } from "../../../hooks/useEntidades";
 import formatearFecha from "../../../utilidades/formatearFecha";
 import type Actor from "../modelos/Actor.model";
@@ -20,7 +21,7 @@ export default function IndiceActores() {
                     <tbody>
                         {actores?.map(actor => <tr key={actor.id}>
                             <td>
-                                <img className="me-2" width={35} alt="foto" src={actor.foto}></img>
+                                <img className="me-2" width={35} alt="foto" src= {getImageUrl(actor.foto)}></img>
                                 {actor.nombre}
                             </td>
                             <td>{formatearFecha(actor.fechaNacimiento)}</td>

@@ -8,6 +8,7 @@ import Mapa from "../../../componentes/Mapa/Mapa";
 import Rating from "../../../componentes/Rating/Rating";
 import type RatingCreacion from "../../../componentes/Rating/RatingCreacion.model";
 import Swal from "sweetalert2";
+import { getImageUrl } from "../../../componentes/LoadImage";
 
 export default function DetallePelicula() {
     const { id } = useParams();
@@ -67,7 +68,7 @@ export default function DetallePelicula() {
                 <div className="d-flex">
                     <span className="d-inline-block me-2">
                         <h4>Poster</h4>
-                        <img src={pelicula.poster} style={{ width: '225px', height: '315px' }} />
+                        <img src={getImageUrl(pelicula.poster)} style={{ width: '225px', height: '315px' }} alt={pelicula.titulo} />
                     </span>
                     {pelicula.trailer && (
                         <span>
@@ -82,7 +83,7 @@ export default function DetallePelicula() {
                         <div className="row">
                             {pelicula.actores.map(actor => (
                                 <div key={actor.id} className="col-md-4 d-flex mb-3">
-                                    <img src={actor.foto} alt={actor.nombre} style={{ width: '80px', height: '100px' }} />
+                                    <img src={getImageUrl(actor.foto)} alt={actor.nombre} style={{ width: '80px', height: '100px' }} />
                                     <div>
                                         <strong>{actor.nombre}</strong>
                                         <br />

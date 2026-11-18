@@ -7,6 +7,7 @@ import clienteAPI from "../../../api/clienteAxios";
 import { useContext } from "react";
 import AlertaContext from "../../../utilidades/AlertaContext";
 import Autorizado from "../../seguridad/componentes/Autorizado";
+import { getImageUrl } from "../../../componentes/LoadImage";
 
 export default function PeliculaIndividual(props: PeliculaIndividualProps) {
     const construirLink = () => `/peliculas/${props.pelicula.id}`;
@@ -23,8 +24,8 @@ export default function PeliculaIndividual(props: PeliculaIndividualProps) {
     }
     return (
         <div className={styles.div}>
-            <NavLink to={construirLink()}>
-                <img alt="Poster" src={props.pelicula.poster} width='250px' />
+            <NavLink to={construirLink()} aria-label={`Ver detalle de ${props.pelicula.titulo}`}>
+                <img src={getImageUrl(props.pelicula.poster)} width='250px' alt={props.pelicula.titulo} />
             </NavLink>
             <p>
                 <NavLink to={construirLink()}>{props.pelicula.titulo}</NavLink>
