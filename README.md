@@ -77,15 +77,22 @@ cd React_Movies
 npm install
 ```
 
-### Configurar la URL de la API
+### Configurar las URL de la API y las imágenes
 
-Crea un archivo `.env` en la raíz del proyecto con la URL base de la API (incluyendo `/api`):
+Crea un archivo `.env` en la raíz del proyecto y configura las siguientes variables:
 
-```bash
-VITE_API_URL=https://localhost:7263/api
+```
+VITE_API_URL=https://localhost:7263/api/v1
+VITE_API_URL_IDENTITY=https://localhost:7263
 ```
 
-> La API solo acepta peticiones de los orígenes permitidos. Asegúrate de que `http://localhost:5173` (el puerto por defecto de Vite) esté en `origenesPermitidos` en la configuración de la API.
+- **`VITE_API_URL`**: URL base para las peticiones HTTP a la API. Incluye la ruta `/api/v1`, correspondiente a la versión actual de la API.
+- **`VITE_API_URL_IDENTITY`**: URL base del servidor utilizada para construir las rutas de las imágenes almacenadas localmente.
+
+La aplicación admite tanto rutas relativas (por ejemplo, `/images/actors/imagen.jpg`) como URL absolutas (por ejemplo, las imágenes almacenadas en Azure Blob Storage).
+
+> **Importante:** ajusta las direcciones según el puerto y la configuración de tu API. La API solo acepta peticiones de los orígenes permitidos. Asegúrate de que `http://localhost:5173` (el puerto por defecto de Vite) esté incluido en `origenesPermitidos` en la configuración de la API.
+
 
 ### Ejecutar en desarrollo
 
